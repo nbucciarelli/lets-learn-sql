@@ -1,0 +1,317 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Let's Learn SQL!</title>
+
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/monokai.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<!-- Slide 1 -->
+				<section>
+					<h2>Let's learn SQL!</h2>
+
+					by Nick Bucciarelli
+					<br />
+					<img src="https://media.giphy.com/media/VABbCpX94WCfS/giphy.gif">
+				</section>
+
+				<!-- Slide 2 -->
+				<section>
+					<section data-markdown>
+						- What
+						- Why
+						- Who
+					</section>
+					<section data-markdown>
+						### What is MySQL?
+
+						##### SQL
+
+						["Structured Query Language"](https://en.wikipedia.org/wiki/SQL) is a [domain-specific language](https://en.wikipedia.org/wiki/Domain-specific_language) designed to handle structured relational data. 
+
+						##### MySQL
+						
+						MySQL is a relational database management system based on SQL. The application is used for a wide range of purposes most notably web databases.
+					</section>
+					<section data-markdown>
+						### Who?
+
+						MySQL was developed by [MySQL AB](https://en.wikipedia.org/wiki/MySQL_AB), then bought by [Sun Microsystems](https://en.wikipedia.org/wiki/Sun_Microsystems) who turned into [Oracle](https://en.wikipedia.org/wiki/Oracle_Corporation). Written in [C](https://en.wikipedia.org/wiki/C_(programming_language)) and [C++](https://en.wikipedia.org/wiki/C%2B%2B).
+					</section>
+					<section data-markdown>
+						### Why?
+
+						- Scalable
+						- Reliable
+						- Quick to start
+						- "Easy" to learn and use
+
+						TL;DR we need data, right?
+					</section>
+				</section>
+				
+				<!-- Slide 3 -->
+				<section style="color:yellow">
+					It IS a programming language. Don't be scared!
+					<br />
+					<img src="https://media.tenor.com/images/d6ed8402fa66484af5b672f14991d655/tenor.gif" width="400" height="400"/>
+				</section>
+
+				<!-- Slide 4 -->
+				<section>
+					<section data-markdown>
+						### Common terms
+
+						- Database
+						- Table
+						- Column
+						- Row
+					</section>
+					<section data-markdown>
+						### Database
+						
+						Collection of tables.
+
+						##### Ours:
+						- Bodas_US
+
+						##### Our test:
+						- Employees
+					</section>
+					<section data-markdown>
+						### Table
+						
+						Holds all of your data. Your data inside of a table is sorted into columns.
+
+						##### Production examples:
+						- PB_EMPRESAS (vendors)
+						- PB_COM_USERS
+
+						##### Our test:
+						- employees
+						- titles
+						- salaries
+					</section>
+					<section data-markdown>
+						### Column/Field
+
+						A column is a data member of a table. Each column has a type (among other things) associated with it.
+
+						##### Common column types:
+						
+						- INT/FLOAT (numbers)
+						- BOOLEAN (true/false)
+						- CHAR/VARCHAR (string or set of characters)
+						- DATE
+						- ENUM (pick from a list)
+					</section>
+					<section data-markdown>
+						##### EXERCISE:
+
+						```
+						INT/FLOAT, BOOLEAN, CHAR/VARCHAR, DATE, ENUM
+						```
+
+						- emp_no
+						- first_name
+						- last_name
+						- birth_date
+						- gender
+					</section>
+					<section data-markdown>
+						### Row/record
+
+						An entry in the table with data filled into corresponding columns.
+
+						|  emp_no | first_name        | last_name           | birth_date  |
+						| ------------- | ------------- |:-------------:| -----:|
+						|  PRIMARY KEY  | Nick      | Bucciarelli | 1988-01-29 |
+						|  PRIMARY KEY  | Dude      | Yosup | NULL |
+					</section>
+				</section>
+				
+				<!-- Slide 5 -->
+				<section data-markdown>
+					# Primary Key
+
+					A column on a table that is used to uniquely identify a record. The `Primary Key` can NOT contain a `NULL` value. A table can only have 1 `Primary Key` column. 
+
+					This column is usually an ID of some sort.
+				</section>
+				<section data-markdown>
+					# Foriegn Key
+
+					A column on a table that is used to link to a record in another table. You can have as many `foreign keys` as you want.
+				</section>
+				<section data-markdown>
+						# Queries
+
+						You use `queries` to fetch/insert/update/delete data from your database. It is a collection of keywords 
+
+						- SELECT
+						- INSERT
+						- UPDATE
+						- DELETE
+				</section>
+				<section>
+					<section>
+						<h1>Let's get started!</h1>
+					</section>
+					<section>
+            <h3>Sequel Pro</h3>
+            <br />
+            <img src="./img/sqlpro-connect.png" width="300" height="300" />
+          </section>
+          <section>
+            <h3>SQLYog</h3>
+            <br />
+            <img src="./img/sqlyog-connect.png" width="400" height="350" />
+          </section>	
+          <section>
+            <h3>SQLYog Interface</h3>
+            <br />
+            <img src="./img/sqlyog-interface.png" width="700" height="500" />
+          </section>	
+        </section>
+
+        <section data-markdown>
+          # Select
+
+          ```
+          SELECT * FROM employees;
+          SELECT first_name, last_name FROM employees;
+          ```
+        </section>
+				<section data-markdown>
+          # Were
+
+          ```
+          SELECT * FROM employees WHERE first_name='Elvis';
+          SELECT * FROM employees WHERE first_name='Elvis' AND gender='M';
+          SELECT * FROM employees WHERE birth_date > '1960-01-01';
+          SELECT * FROM users WHERE is_admin > 0;
+          ```
+        </section>
+
+				<section data-markdown>
+          # Were evolved
+
+          ```
+          // DESC vs ASC
+          SELECT * FROM employees WHERE first_name='Elvis' ORDER BY birth_date DESC;
+          // Wildcard
+          SELECT * FROM employees WHERE first_name LIKE 'el%';
+          SELECT * FROM employees WHERE first_name LIKE '%el';
+          SELECT * FROM employees WHERE first_name LIKE '%el%';
+          SELECT * FROM employees WHERE first_name NOT LIKE 'el%';
+          SELECT * FROM employees WHERE first_name IN ('Elvis', 'Parto');
+          ```
+        </section>
+
+        <section data-markdown>
+          # Joins
+
+          ```
+          SELECT
+            employees.first_name,
+            employees.last_name,
+            salaries.salary,
+            salaries.from_date,
+            salaries.to_date
+          FROM employees
+          JOIN salaries
+          ON employees.emp_no = salaries.emp_no
+          ORDER BY employees.first_name ASC;          
+          ```
+        </section>
+        <section data-markdown>
+          # More joins
+          ```
+          SELECT
+            employees.first_name,
+            employees.last_name,
+            titles.title
+          FROM employees
+          JOIN titles
+          ON employees.emp_no = titles.emp_no
+          ORDER BY employees.first_name ASC;          
+          ```          
+        </section>
+        <section data-markdown>
+          # Multiple tables
+          ```
+          SELECT
+            employees.first_name,
+            employees.last_name,
+            titles.title,
+            salaries.from_date,
+            salaries.to_date
+          FROM employees
+          JOIN salaries ON employees.emp_no = salaries.emp_no
+          JOIN titles ON employees.emp_no = titles.emp_no
+          ORDER BY employees.first_name ASC;          
+          ```
+        </section>
+        <section data-markdown>
+          # Insert
+          ```
+          INSERT INTO employees (first_name, last_name, gender) values ('Nick', 'Bucciarelli', 'M');
+          ```
+          ```
+          select * from employees where last_name="Bucciarelli";
+          ```
+          ![asdf](./img/after-insert.png)
+        </section>  
+        <section data-markdown>
+          # Update
+          ```
+          UPDATE employees SET birth_date = now() WHERE last_name = "Bucciarelli";
+          ```
+        </section>  
+        <section data-markdown>
+          # Delete
+          ```
+          DELETE FROM employees WHERE last_name = "Bucciarelli";
+          ```
+        </section>
+      </div>
+		</div>
+
+		<script src="js/reveal.js"></script>
+		<script src="plugin/markdown/marked.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true }
+				]
+			});
+		</script>
+	</body>
+</html>
